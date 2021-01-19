@@ -1,14 +1,21 @@
-# Chapter 3 - recursion
+# Chapter 4 - quicksort
 
-# recursive function to calculate factorial
+# a quicksort function
 
-def factorial(n):
-  print(n)
-  if n == 1:
-    return 1
-  return factorial(n-1) * n
+def quicksort(arr):
+  print(arr)
+  if len(arr) < 2: # the base case
+    return arr # arrays with 1 or 0 elements are already 'sorted'
+
+  pivot = arr[0]
+  less = [x for x in arr[1:] if x <= pivot]
+  more = [x for x in arr[1:] if x > pivot]
 
 
-# recursion functions have 2 cases: the base case and the recursive case
-# a stack has two operations: push and pop, those are used during recursion
-# all function calls go to one stack
+  return quicksort(less) + [pivot] + quicksort(more)
+
+
+print(quicksort([5, 10, 3, 2]))
+# [2, 3, 5, 10]
+
+# by selecting the pivot to be a random element, the average runtime of quicksort is O(nlogn)
