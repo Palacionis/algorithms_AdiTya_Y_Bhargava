@@ -53,16 +53,16 @@ def search(name):
   searched = set()
 
   while search_queue:
-    print(search_queue)
+    # print(search_queue)
     person = search_queue.popleft()
     if person not in searched:
-      print(f'Searching {person}')
+      # print(f'Searching {person}')
       if person_is_seller(person):
         return f'{person} is a mango seller'
       else:
         search_queue += graph[person]
         searched.add(person)
-  return f'None is a mango seller'
+  return f'Noone is a mango seller'
 
 search('you')
 
