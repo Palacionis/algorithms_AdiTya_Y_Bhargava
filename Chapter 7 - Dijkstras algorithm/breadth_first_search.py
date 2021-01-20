@@ -82,30 +82,3 @@ search('you')
 # deque(['thom', 'jonny'])
 # Searching thom
 # 'thom is a mango seller'
-
-
-# to actually return the shortest path
-
-def search(name):
-  search_queue = deque()
-  search_queue.append((name, None))
-  searched = {}  # dict instead of set
-
-  while search_queue:
-    # print(search_queue)
-    person, prev = search_queue.popleft()
-    if person not in searched:
-      searched[person] = prev
-      # print(f'Searching {person}')
-      if person_is_seller(person):
-        result = []
-        while person is not None:
-            result.append(person)
-            person = searched[person]
-        return result[::-1]
-      else:
-        search_queue += [(neighbor, person) for neighbor in graph[person]]
-  return []
-
-search('you')
-['you', 'claire', 'thom']
